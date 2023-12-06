@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+cd frontend
+pnpm lint
+pnpm format 
+pnpm lint:style 
+git update-index --again
+echo "✨ Done - HUSKY_PRE_COMMIT"
