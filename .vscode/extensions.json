@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "golang.go",
+    "Vue.volar",
+    "Vue.vscode-typescript-vue-plugin",
+    "lokalise.i18n-ally",
+    "antfu.iconify",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss"
+  ]
+}

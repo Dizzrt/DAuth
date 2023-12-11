@@ -1,5 +1,9 @@
 {
   "common": {
-    "welcome": "welcome"
+    "email": "Email",
+    "password": "Password",
+    "remeber-me": "Remeber me",
+    "sign-in": "Sign in",
+    "sign-out": "Sign out"
   }
 }

@@ -17,20 +17,20 @@
         <div style="flex: 1; display: flex; flex-direction: column">
           <div style="display: flex; justify-content: center; align-items: center">
             <a-form :model="formData" :style="{ width: '500px' }" size="large" :layout="'vertical'">
-              <a-form-item field="account" label="Account">
-                <a-input v-model="formData.account" />
+              <a-form-item field="email" :label="$t('common.email')">
+                <a-input v-model="formData.email" />
               </a-form-item>
 
-              <a-form-item field="password" label="Password">
+              <a-form-item field="password" :label="$t('common.password')">
                 <a-input v-model="formData.password" type="password" />
               </a-form-item>
 
               <a-form-item>
-                <a-checkbox v-model="formData.isRemeber">remeber me</a-checkbox>
+                <a-checkbox v-model="formData.isRemeber">{{ $t('common.remeber-me') }}</a-checkbox>
               </a-form-item>
 
               <a-form-item>
-                <a-button type="primary" @click="login">Submit</a-button>
+                <a-button type="primary" @click="signIn">{{ $t('common.sign-in') }}</a-button>
               </a-form-item>
             </a-form>
           </div>
@@ -49,9 +49,9 @@
   display: flex;
   width: 840px;
   height: 520px;
-  background-color: #fff;
+  background-color: var(--color-bg-2);
   border: 1px solid var(--color-neutral-3);
-  border-radius: 5px;
+  border-radius: var(--border-radius-large);
   box-shadow: 0 0 10px rgb(0 0 0 / 10%);
 }
 
@@ -64,12 +64,12 @@
 import { reactive } from 'vue';
 
 const formData = reactive({
-  account: '',
+  email: '',
   password: '',
   isRemeber: false,
 });
 
-const login = async () => {
+const signIn = async () => {
   console.log(formData);
 };
 </script>

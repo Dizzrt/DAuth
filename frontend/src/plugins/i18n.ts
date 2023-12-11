@@ -1,4 +1,4 @@
-import { App } from 'vue';
+// import { App } from 'vue';
 import { useLocalStorage } from '@vueuse/core';
 import { createI18n /*, VueMessageType*/ } from 'vue-i18n';
 // import type { LocaleMessage } from '@intlify/core-base';
@@ -79,9 +79,11 @@ const i18n = createI18n({
 // export const te = i18n.global.te;
 // export const curLocale = i18n.global.locale;
 
-const install = (app: App) => {
-  app.config.globalProperties.$t = i18n.global.t;
-  // app.use(i18n);
-};
+// const install = (app: App) => {
+//   app.config.globalProperties.$t = i18n.global.t;
+//   // app.use(i18n);
+// };
 
-export default install;
+// export default install;
+
+export default i18n;

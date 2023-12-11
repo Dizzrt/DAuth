@@ -1,5 +1,9 @@
 {
   "common": {
-    "welcome": "欢迎"
+    "email": "邮箱",
+    "password": "密码",
+    "remeber-me": "记住我",
+    "sign-in": "登录",
+    "sign-out": "登出"
   }
 }

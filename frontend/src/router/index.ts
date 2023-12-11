@@ -6,7 +6,7 @@ import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
   { path: '/', name: 'home', component: () => import('@/views/Home.vue') },
-  { path: '/login', name: 'login', component: () => import('@/views/Login.vue') },
+  { path: '/sign-in', name: 'sign-in', component: () => import('@/views/SignIn.vue') },
 
   // add routes
   // eg. ...XXRoutes
