@@ -16,7 +16,9 @@ const (
 	_KEY_LOG_COMPRESS    = "log.compress"
 )
 
-func (cfg *config) LogGetPath() string {
+func LogGetPath() string {
+	cfg := Instance()
+
 	var path string
 	if !cfg.v.IsSet(_KEY_LOG_PATH) {
 		path = "./logs/log"
@@ -48,7 +50,9 @@ func (cfg *config) LogGetPath() string {
 	return path
 }
 
-func (cfg *config) LogGetMaxSize() int {
+func LogGetMaxSize() int {
+	cfg := Instance()
+
 	if !cfg.v.IsSet(_KEY_LOG_MAX_SIZE) {
 		size := 10
 
@@ -62,7 +66,9 @@ func (cfg *config) LogGetMaxSize() int {
 	return size
 }
 
-func (cfg *config) LogGetMaxBackups() int {
+func LogGetMaxBackups() int {
+	cfg := Instance()
+
 	if !cfg.v.IsSet(_KEY_LOG_MAX_BACKUPS) {
 		maxBackups := 7
 
@@ -76,7 +82,9 @@ func (cfg *config) LogGetMaxBackups() int {
 	return maxBackups
 }
 
-func (cfg *config) LogGetMaxAge() int {
+func LogGetMaxAge() int {
+	cfg := Instance()
+
 	if !cfg.v.IsSet(_KEY_LOG_MAX_AGE) {
 		maxAge := 30
 
@@ -90,7 +98,9 @@ func (cfg *config) LogGetMaxAge() int {
 	return maxAge
 }
 
-func (cfg *config) LogGetIsLocalTime() bool {
+func LogGetIsLocalTime() bool {
+	cfg := Instance()
+
 	if !cfg.v.IsSet(_KEY_LOG_LOCAL_TIEM) {
 		isLocalTime := false
 
@@ -104,7 +114,9 @@ func (cfg *config) LogGetIsLocalTime() bool {
 	return isLocalTime
 }
 
-func (cfg *config) LogGetIsComporess() bool {
+func LogGetIsComporess() bool {
+	cfg := Instance()
+
 	if !cfg.v.IsSet(_KEY_LOG_COMPRESS) {
 		isCompress := false
 

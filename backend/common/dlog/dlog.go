@@ -1,4 +1,4 @@
-package log
+package dlog
 
 import (
 	"time"
@@ -19,12 +19,12 @@ var (
 // -------------------- logger init start --------------------
 func init() {
 	hook := &lumberjack.Logger{
-		Filename:   config.Instance().LogGetPath(),
-		MaxSize:    config.Instance().LogGetMaxSize(),
-		MaxBackups: config.Instance().LogGetMaxBackups(),
-		MaxAge:     config.Instance().LogGetMaxAge(),
-		LocalTime:  config.Instance().LogGetIsLocalTime(),
-		Compress:   config.Instance().LogGetIsComporess(),
+		Filename:   config.LogGetPath(),
+		MaxSize:    config.LogGetMaxSize(),
+		MaxBackups: config.LogGetMaxBackups(),
+		MaxAge:     config.LogGetMaxAge(),
+		LocalTime:  config.LogGetIsLocalTime(),
+		Compress:   config.LogGetIsComporess(),
 	}
 
 	writeSyncer := zapcore.BufferedWriteSyncer{

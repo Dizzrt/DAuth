@@ -32,7 +32,5 @@
   "i18n-ally.displayLanguage": "zh-CN",
   "i18n-ally.editor.preferEditor": true,
   "i18n-ally.enabledFrameworks": ["vue"],
-  "i18n-ally.parserOptions": {},
-  "go.lintOnSave": "workspace",
-  "go.lintTool": "golangci-lint"
+  "i18n-ally.parserOptions": {}
 }
