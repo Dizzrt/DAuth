@@ -1,4 +1,4 @@
-package config
+package config_base
 
 import (
 	"fmt"
@@ -11,7 +11,7 @@ import (
 const _CONFIG_PATH = "./config.toml"
 
 type config struct {
-	v *viper.Viper
+	V *viper.Viper
 }
 
 var (
@@ -45,7 +45,7 @@ func Instance() *config {
 
 		// config init
 		instance = &config{
-			v: v,
+			V: v,
 		}
 	})
 

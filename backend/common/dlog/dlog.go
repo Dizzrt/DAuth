@@ -3,7 +3,7 @@ package dlog
 import (
 	"time"
 
-	"github.com/Dizzrt/DAuth/backend/common/config"
+	"github.com/Dizzrt/DAuth/backend/common/config/config_base"
 	"github.com/natefinch/lumberjack"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
@@ -19,12 +19,12 @@ var (
 // -------------------- logger init start --------------------
 func init() {
 	hook := &lumberjack.Logger{
-		Filename:   config.LogGetPath(),
-		MaxSize:    config.LogGetMaxSize(),
-		MaxBackups: config.LogGetMaxBackups(),
-		MaxAge:     config.LogGetMaxAge(),
-		LocalTime:  config.LogGetIsLocalTime(),
-		Compress:   config.LogGetIsComporess(),
+		Filename:   config_base.LogGetPath(),
+		MaxSize:    config_base.LogGetMaxSize(),
+		MaxBackups: config_base.LogGetMaxBackups(),
+		MaxAge:     config_base.LogGetMaxAge(),
+		LocalTime:  config_base.LogGetIsLocalTime(),
+		Compress:   config_base.LogGetIsComporess(),
 	}
 
 	writeSyncer := zapcore.BufferedWriteSyncer{
