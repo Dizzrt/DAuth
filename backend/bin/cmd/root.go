@@ -1,9 +1,16 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
+	"net/http"
 	"os"
+	"os/signal"
+	"syscall"
 
+	"github.com/Dizzrt/DAuth/backend/common/config"
+	"github.com/Dizzrt/DAuth/backend/common/dlog"
+	"github.com/Dizzrt/DAuth/backend/server"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -41,18 +48,11 @@ var cfgFile string
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "bin",
-	Short: "A brief description of your application",
-	Long: `A longer description that spans multiple lines and likely contains
-examples and usage of using your application. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
-	// Uncomment the following line if your bare application
-	// has an action associated with it:
+	Use:   "dauth",
+	Short: "Dauth is an identity provider and SSO platform",
 	Run: func(cmd *cobra.Command, args []string) {
 		start()
+		_ = dlog.Sync()
 
 		fmt.Printf("%s\n", byeBanner)
 	},
@@ -106,6 +106,37 @@ func initConfig() {
 }
 
 func start() {
-	fmt.Printf(greetingBanner, "123")
+	var s *server.Server
 
+	ctx, cancel := context.WithCancel(context.Background())
+	c := make(chan os.Signal, 1)
+
+	signal.Notify(c, os.Interrupt, syscall.SIGTERM)
+	go func() {
+		sig := <-c
+		dlog.Infof("%s received", sig.String())
+		if s != nil {
+			_ = s.Shutdown(ctx)
+		}
+		cancel()
+	}()
+
+	s, err := server.NewServer(ctx)
+	if err != nil {
+		dlog.Panic("create server failed with error: %v", err)
+	}
+
+	if err := s.Run(ctx, config.ServerGetPort()); err != nil {
+		if err != http.ErrServerClosed {
+			dlog.Errorf("start server failed with error: %v", err)
+			_ = s.Shutdown(ctx)
+			cancel()
+		}
+	} else {
+		msg := fmt.Sprintf("Version %s has started on port %d 🚀", "dev", 80)
+		fmt.Printf(greetingBanner, msg)
+	}
+
+	// wait for ctrl-c
+	<-ctx.Done()
 }
