@@ -1,0 +1,38 @@
+public
+docs
+
+*.sh
+*.md
+.eslintrc.json
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode
+
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Apple Desktop services store
+.DS_Store
+._*
+.fuse_hidden*
+
+# vite temporary file
+vite.config.ts.timestamp-*.mjs

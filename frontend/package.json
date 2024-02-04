@@ -8,9 +8,21 @@
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix",
-    "format": "prettier --write \"./**/*.{html,vue,ts,js,cjs,json,md}\"",
-    "lint:style": "stylelint \"./**/*.{css,less,vue,html}\" --fix",
-    "prepare": "cd .. && husky install frontend/.husky"
+    "format": "prettier --write \"./**/*.{html,vue,ts,tsx,js,cjs,json,md}\"",
+    "lint:style": "stylelint \"./**/*.{css,postcss,less,vue,html}\" --fix",
+    "prepare": "cd .. && husky install frontend/.husky",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{html,vue,js,jsx,cjs,ts,tsx,json,md}": [
+      "prettier --write"
+    ],
+    "*.{js,jsx,cjs,ts,tsx,vue}": [
+      "eslint --fix"
+    ],
+    "*.{css,postcss,less,vue,html}": [
+      "stylelint --fix"
+    ]
   },
   "dependencies": {
     "@vueuse/core": "^10.7.0",
@@ -31,6 +43,7 @@
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-vue": "^9.19.2",
     "husky": "^8.0.3",
+    "lint-staged": "^15.2.1",
     "postcss": "^8.4.32",
     "postcss-html": "^1.5.0",
     "postcss-less": "^6.0.0",
