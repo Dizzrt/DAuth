@@ -27,6 +27,8 @@
   "dependencies": {
     "@vueuse/core": "^10.7.0",
     "lodash-es": "^4.17.21",
+    "long": "^5.2.3",
+    "protobufjs": "^7.2.6",
     "vue": "^3.3.8",
     "vue-i18n": "^9.8.0",
     "vue-router": "4"

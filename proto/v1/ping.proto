@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package dauth.v1;
+
+import "google/api/annotations.proto";
+
+option go_package = "generated/v1pb";
+
+message PingRequest {}
+
+message PingResponse {
+  string pong = 1;
+}
+
+
+service PingService {
+  rpc Ping(PingRequest) returns (PingResponse) {
+    option (google.api.http) = {get:"/v1/ping"};
+  }
+}
